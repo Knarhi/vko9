@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="670.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vko9teht.FXMLDocumentController">
+    <children>
+        <Button id="timeSearchButton" fx:id="timeSearchButton" layoutX="136.0" layoutY="163.0" onAction="#timeSearchButtonPress" text="Listaa elokuvat" />
+        <Label fx:id="label" layoutX="14.0" layoutY="14.0" minHeight="16" minWidth="69" text="Finnkinon elokuvat">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField id="startTime" fx:id="startTime" layoutX="15.0" layoutY="130.0" prefHeight="25.0" prefWidth="216.0" promptText="Alkamisaika" />
+      <TextField id="endTime" fx:id="endTime" layoutX="241.0" layoutY="130.0" prefHeight="25.0" prefWidth="202.0" promptText="Päättymisaika" />
+      <TextField id="date" fx:id="dateInputField" layoutX="241.0" layoutY="76.0" prefHeight="25.0" prefWidth="202.0" promptText="Esityspäivä" />
+      <Label layoutX="15.0" layoutY="113.0" text="Alkamisväli:" />
+      <Label layoutX="11.0" layoutY="200.0" text="Tai hae elokuvan nimellä:" />
+      <Button fx:id="nameSearchButton" layoutX="443.0" layoutY="196.0" mnemonicParsing="false" onAction="#nameSearchButtonPress" text="Nimihaku" />
+      <TextField id="nameField" layoutX="153.0" layoutY="196.0" prefHeight="25.0" prefWidth="258.0" promptText="Anna elokuvan nimi" />
+      <Line endX="400.0" layoutX="119.0" layoutY="229.0" startX="-100.0" strokeWidth="0.5" />
+      <Label id="outPutField" fx:id="outPutField" layoutX="10.0" layoutY="242.0" prefHeight="418.0" prefWidth="501.0" />
+      <ComboBox id="combo" fx:id="combo" layoutX="15.0" layoutY="76.0" onAction="#showList" prefHeight="25.0" prefWidth="216.0" promptText="Valitse Alue/Teatteri" />
+    </children>
+</AnchorPane>
