@@ -5,8 +5,10 @@
  */
 package vko9teht;
 
+import java.io.IOException;
 import java.io.InputStream;
 import static java.lang.Integer.parseInt;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -50,26 +52,12 @@ public class PageReader {
                     TheaterList.theaters.add(th);
                 }
             }
-        } else {
-            
-        
-        
-            String theaterid = url.substring(43,47);
-            
-            for(int i=0; i<idNodes.getLength();i++)
-            {
-                String id = idNodes.item(i).getTextContent();
-                
-                int idn = parseInt(id);
-                String s = nameNodes.item(i).getTextContent();
-                if (s != null) {
-                    Show sh = new Show(id, idn);
-                    
-                    
-                }
-                
-            }
         }
+            
+        
+        
+           
+        
 
         return doc;
         
@@ -96,6 +84,36 @@ public class PageReader {
 
         return doc;
     }
+
+    public Document LoadShowList (String url, String id, String time, String endTime) throws MalformedURLException, IOException, Exception {
+        URL u = new URL(url);
+        URLConnection connection;
+        connection = u.openConnection();
+
+        Document doc = parseXML(connection.getInputStream());
+        NodeList idNodes = doc.getElementsByTagName(id);
+        NodeList timeNodes = doc.getElementsByTagName(time);
+        NodeList endNodes = doc.getElementsByTagName(endTime);
+        String theaterid = url.substring(43,47);
+            
+            for(int i=0; i<idNodes.getLength();i++)
+            {
+                String j = idNodes.item(i).getTextContent();
+                int idn = parseInt(j);
+                String s = timeNodes.item(i).getTextContent();
+                String e = endNodes.item(i).getTextContent();
+                
+                 
+                if (s != null) {
+                    Show sh = new Show(j,idn,s);
+                    
+                    
+                }
+                
+            }
+        
+
+        return doc;
         /*DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.parse(new URL(url).openStream());
@@ -103,6 +121,7 @@ public class PageReader {
         return doc;
         //return (Document) dbf.newDocumentBuilder().parse(new URL(url).openStream()); */
     }
+}
 
 
 

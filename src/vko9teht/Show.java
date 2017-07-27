@@ -10,9 +10,13 @@ package vko9teht;
  * @author Qnaerhi
  */
 public class Show {
-
-    Show(String id, int idn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String name;
+    int ID;
+    String startTime;
+    Show(String id, int idn, String time) {
+        name = id;
+        ID = idn;
+        startTime = time;
     }
     
 }

@@ -71,11 +71,16 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void timeSearchButtonPress(ActionEvent event) {
+    private void timeSearchButtonPress(ActionEvent event) throws Exception {
         String theaterID = combo.getValue();
         String date = dateInputField.getText();
-        String start = startTime.getText();
-        String end = endTime.getText();
+        String datef = date+"T00:00:00";
+        String start = date+"T"+startTime.getText();
+        String end = date+"T"+endTime.getText();
+        TheaterList thList = new TheaterList();
+        thList.getList("http://www.finnkino.fi/xml/Schedule/?area=","ID","Name");
+        
+        
     }
 
     @FXML
